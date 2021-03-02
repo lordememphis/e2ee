@@ -13,14 +13,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/lordememphis/e2ee-demo.git"
+    "url": "git+ssh://git@github.com/lordememphis/e2ee.git"
   },
   "author": "lordememphis",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/lordememphis/e2ee-demo/issues"
+    "url": "https://github.com/lordememphis/e2ee/issues"
   },
-  "homepage": "https://github.com/lordememphis/e2ee-demo#readme",
+  "homepage": "https://github.com/lordememphis/e2ee#readme",
   "dependencies": {
     "argon2": "^0.27.1",
     "cors": "^2.8.5",
