@@ -1,13 +1,13 @@
 import debug from 'debug';
-import { CreateDto as IUser } from './dto';
-import mongooseService from '../common/service/mongoose.service';
+import { UserModel } from './models';
+import dbService from '../common/services/db.service';
 
-const log: debug.IDebugger = debug('app:dao');
+const log: debug.IDebugger = debug('app:user-dao');
 
 class UsersDao {
   private static instance: UsersDao;
 
-  Schema = mongooseService.getMongoose().Schema;
+  Schema = dbService.db.Schema;
 
   userSchema = new this.Schema(
     {
@@ -18,7 +18,7 @@ class UsersDao {
     { versionKey: false }
   );
 
-  User = mongooseService.getMongoose().model<IUser>('User', this.userSchema);
+  User = dbService.db.model<UserModel>('User', this.userSchema);
 
   constructor() {
     log('Created new instance of UsersDao');
@@ -29,14 +29,14 @@ class UsersDao {
     return UsersDao.instance;
   }
 
-  async addUser(user: IUser): Promise<string> {
+  async addUser(user: UserModel): Promise<string> {
     const doc = await new this.User({
       username: user.username,
       email: user.email,
       password: user.password,
     })
       .save()
-      .then((doc: IUser) => doc);
+      .then((doc: UserModel) => doc);
     return doc._id;
   }
 
@@ -44,7 +44,7 @@ class UsersDao {
     return this.User.findOne({ email: email }).exec();
   }
 
-  async getUsers(): Promise<IUser[]> {
+  async getUsers(): Promise<UserModel[]> {
     return this.User.find().exec();
   }
 }

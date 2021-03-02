@@ -3,8 +3,8 @@ import debug from 'debug';
 
 const log: debug.IDebugger = debug('mongo');
 
-class MongooseService {
-  private static instance: MongooseService;
+class DatabaseService {
+  private static instance: DatabaseService;
   private count = 0;
   private mongooseOptions = {
     useCreateIndex: true,
@@ -16,12 +16,12 @@ class MongooseService {
     this.connectWithRetry();
   }
 
-  static getInstance(): MongooseService {
-    if (!this.instance) this.instance = new MongooseService();
+  static getInstance(): DatabaseService {
+    if (!this.instance) this.instance = new DatabaseService();
     return this.instance;
   }
 
-  getMongoose(): mongoose.Mongoose {
+  get db(): mongoose.Mongoose {
     return mongoose;
   }
 
@@ -40,4 +40,4 @@ class MongooseService {
   }
 }
 
-export default MongooseService.getInstance();
+export default DatabaseService.getInstance();

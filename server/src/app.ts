@@ -7,6 +7,7 @@ import * as winston from 'winston';
 import * as expressWinston from 'express-winston';
 import { CommonRoutesConfig } from './common/common.routes.config';
 import { UsersRoutes } from './users/users.routes.config';
+import { ChatsRoutes } from './chats/chats.routes.config';
 
 const app: express.Application = express();
 const server = http.createServer(app);
@@ -26,7 +27,7 @@ app.use(
   })
 );
 
-routes.push(new UsersRoutes(app));
+routes.push(new UsersRoutes(app), new ChatsRoutes(app));
 
 app.use(
   expressWinston.errorLogger({

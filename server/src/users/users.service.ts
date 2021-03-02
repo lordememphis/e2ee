@@ -1,4 +1,4 @@
-import { CRUD } from '../common/interface';
+import { CRUD } from '../common/interfaces';
 import usersDao from './users.dao';
 
 class UsersService implements CRUD {
