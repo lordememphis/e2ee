@@ -1,12 +1,11 @@
 import debug from 'debug';
-import dbService from '../common/services/db.service';
-import { UserModel } from '../users/models';
-import { ChatModel } from './models';
+import { dbService } from '../services';
+import { ChatModel, UserModel } from '../models';
 
 const log: debug.IDebugger = debug('app:chats-dao');
 
-class ChatsDao {
-  private static instance: ChatsDao;
+class ChatDao {
+  private static instance: ChatDao;
 
   schema = new dbService.db.Schema(
     {
@@ -18,9 +17,9 @@ class ChatsDao {
 
   Chat = dbService.db.model<ChatModel>('Chat', this.schema);
 
-  static getInstance(): ChatsDao {
-    if (!ChatsDao.instance) ChatsDao.instance = new ChatsDao();
-    return ChatsDao.instance;
+  static getInstance(): ChatDao {
+    if (!ChatDao.instance) ChatDao.instance = new ChatDao();
+    return ChatDao.instance;
   }
 
   constructor() {
@@ -39,4 +38,4 @@ class ChatsDao {
   }
 }
 
-export default ChatsDao.getInstance();
+export default ChatDao.getInstance();

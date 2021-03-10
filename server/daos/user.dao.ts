@@ -1,11 +1,11 @@
 import debug from 'debug';
-import { UserModel } from './models';
-import dbService from '../common/services/db.service';
+import { UserModel } from '../models';
+import { dbService } from '../services';
 
 const log: debug.IDebugger = debug('app:user-dao');
 
-class UsersDao {
-  private static instance: UsersDao;
+class UserDao {
+  private static instance: UserDao;
 
   Schema = dbService.db.Schema;
 
@@ -24,9 +24,9 @@ class UsersDao {
     log('Created new instance of UsersDao');
   }
 
-  static getInstance(): UsersDao {
-    if (!UsersDao.instance) UsersDao.instance = new UsersDao();
-    return UsersDao.instance;
+  static getInstance(): UserDao {
+    if (!UserDao.instance) UserDao.instance = new UserDao();
+    return UserDao.instance;
   }
 
   async addUser(user: UserModel): Promise<string> {
@@ -49,4 +49,4 @@ class UsersDao {
   }
 }
 
-export default UsersDao.getInstance();
+export default UserDao.getInstance();

@@ -1,5 +1,5 @@
 import express from 'express';
-import ChatsService from './chats.service';
+import { chatService } from '../services';
 
 class ChatController {
   private static instance: ChatController;
@@ -11,12 +11,12 @@ class ChatController {
   }
 
   async getChats(req: express.Request, res: express.Response) {
-    const chats = await ChatsService.list(100, 0);
+    const chats = await chatService.list(100, 0);
     res.status(200).send(chats);
   }
 
   async createChat(req: express.Request, res: express.Response) {
-    const id = await ChatsService.create(req.body.users);
+    const id = await chatService.create(req.body.users);
     res.status(200).send({ id: id });
   }
 }

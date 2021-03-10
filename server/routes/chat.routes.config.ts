@@ -1,8 +1,8 @@
 import express from 'express';
-import { CommonRoutesConfig } from '../common/common.routes.config';
-import chatsController from './chat.controller';
+import RoutesConfig from '.';
+import { chatController } from '../controllers';
 
-export class ChatsRoutes extends CommonRoutesConfig {
+export class ChatRoutes extends RoutesConfig {
   constructor(app: express.Application) {
     super(app, 'ChatsRoutes');
   }
@@ -10,8 +10,8 @@ export class ChatsRoutes extends CommonRoutesConfig {
   configureRoutes(): express.Application {
     this.app
       .route('/chats')
-      .get(chatsController.getChats)
-      .post(chatsController.createChat);
+      .get(chatController.getChats)
+      .post(chatController.createChat);
     this.app.route('/chats/:chatId/messages').get().post();
     return this.app;
   }
