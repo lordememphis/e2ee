@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "scripts": {
     "ng:build": "ng build",
-    "node:build": "cd server && tsc",
+    "node:build": "tsc -p server",
     "node:dev": "nodemon ./server/dist/app.js",
     "node:watch": "tsc -w -p server"
   },
