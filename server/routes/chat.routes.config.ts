@@ -1,4 +1,4 @@
-import express from 'express';
+import * as express from 'express';
 import RoutesConfig from '.';
 import { chatController } from '../controllers';
 

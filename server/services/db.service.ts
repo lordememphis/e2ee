@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import debug from 'debug';
 
 const log: debug.IDebugger = debug('mongo');

@@ -7,7 +7,6 @@
     "node:dev": "nodemon ./server/dist/app.js",
     "node:watch": "tsc -w -p server"
   },
-  "type": "module",
   "private": true,
   "dependencies": {
     "@angular/animations": "~11.2.0",

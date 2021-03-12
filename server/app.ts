@@ -1,5 +1,5 @@
-import express from 'express';
-import cors from 'cors';
+import * as express from 'express';
+import * as cors from 'cors';
 import debug from 'debug';
 import * as http from 'http';
 import * as winston from 'winston';
@@ -7,7 +7,7 @@ import * as expressWinston from 'express-winston';
 import RoutesConfig, { ChatRoutes, UserRoutes } from './routes';
 import { logger } from './logger';
 
-const app: express.Application = express();
+const app: express.Application = express.default();
 const server = http.createServer(app);
 const port: String | Number = process.env.PORT || 3000;
 const log: debug.IDebugger = debug('app');
@@ -15,7 +15,7 @@ const routes: Array<RoutesConfig> = [];
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(cors());
+app.use(cors.default());
 app.use(
   expressWinston.logger({
     transports: [new winston.transports.Console()],

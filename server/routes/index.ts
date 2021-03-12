@@ -1,4 +1,4 @@
-import express from 'express';
+import * as express from 'express';
 
 export default abstract class RoutesConfig {
   app: express.Application;

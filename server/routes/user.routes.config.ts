@@ -1,4 +1,4 @@
-import express from 'express';
+import * as express from 'express';
 import RoutesConfig from '.';
 import { userController } from '../controllers';
 import { userMiddleware } from '../middleware';

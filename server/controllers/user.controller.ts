@@ -1,5 +1,5 @@
-import express from 'express';
-import argon2 from 'argon2';
+import * as express from 'express';
+import * as argon2 from 'argon2';
 import { userService } from '../services';
 
 class UserController {

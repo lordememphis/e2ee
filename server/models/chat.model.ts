@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+import * as mongoose from 'mongoose';
 import { UserModel } from './';
 
 export interface ChatModel extends mongoose.Document {
