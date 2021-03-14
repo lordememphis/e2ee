@@ -7,7 +7,9 @@ const log: debug.IDebugger = debug('app:chats-dao');
 class ChatDao {
   private static instance: ChatDao;
 
-  schema = new dbService.db.Schema(
+  Schema = dbService.db.Schema;
+
+  chatSchema = new this.Schema(
     {
       userRx: Object,
       userTx: Object,
@@ -15,7 +17,7 @@ class ChatDao {
     { versionKey: false }
   );
 
-  Chat = dbService.db.model<ChatModel>('Chat', this.schema);
+  Chat = dbService.db.model<ChatModel>('Chat', this.chatSchema);
 
   static getInstance(): ChatDao {
     if (!ChatDao.instance) ChatDao.instance = new ChatDao();
